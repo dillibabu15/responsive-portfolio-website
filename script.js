@@ -1,5 +1,5 @@
 /**
- * Professional Portfolio JavaScript - Final Integrated Version
+ * Professional Portfolio JavaScript - Final Corrected Version
  * Author: D Dilli Babu
  * Description: A robust, class-based script for a modern portfolio website.
  * Features: Throttling, debouncing, Intersection Observers for animations
@@ -49,12 +49,13 @@ class NavigationManager {
     
     this.handleMobileMenu();
     this.handleSmoothScrolling();
-    this.initActiveSectionHighlighting(); // UPDATED to use IntersectionObserver
+    this.initActiveSectionHighlighting();
   }
 
   handleNavbarBackground() {
+    // Add a 'scrolled' class for styling via CSS, which is more flexible
     if (window.scrollY > 20) {
-      this.navbar.classList.add('scrolled'); // Use a class for styling
+      this.navbar.classList.add('scrolled');
     } else {
       this.navbar.classList.remove('scrolled');
     }
@@ -72,8 +73,9 @@ class NavigationManager {
         this.updateMobileMenuIcon();
     });
     
+    // Close mobile menu when clicking outside of it
     document.addEventListener('click', (e) => {
-      if (this.navLinks.classList.contains('open') && !this.navLinks.contains(e.target)) {
+      if (this.navLinks.classList.contains('open') && !this.navbar.contains(e.target)) {
         this.navLinks.classList.remove('open');
         this.updateMobileMenuIcon();
       }
@@ -91,19 +93,18 @@ class NavigationManager {
 
   handleSmoothScrolling() {
     this.navLinks.addEventListener('click', (e) => {
-      if (e.target.tagName === 'A') {
+      if (e.target.tagName === 'A' && e.target.href.includes('#')) {
         e.preventDefault();
         const targetId = e.target.getAttribute('href');
         const targetSection = document.querySelector(targetId);
         if (targetSection) {
-          // The smooth scroll behavior is handled by CSS `scroll-behavior: smooth`
+          // CSS `scroll-behavior: smooth` handles the animation
           targetSection.scrollIntoView();
         }
       }
     });
   }
 
-  // UPDATED METHOD: Uses IntersectionObserver for better performance
   initActiveSectionHighlighting() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -117,7 +118,7 @@ class NavigationManager {
           });
         }
       });
-    }, { rootMargin: '-30% 0px -70% 0px' });
+    }, { rootMargin: '-30% 0px -70% 0px' }); // Highlights when section is in the middle third of the viewport
 
     this.sections.forEach(section => observer.observe(section));
   }
@@ -126,10 +127,8 @@ class NavigationManager {
 // --- SCROLL ANIMATIONS ---
 class ScrollAnimations {
   constructor() {
-    // Programmatically find elements to animate
     this.addAnimationAttributes(); 
     this.animatedElements = document.querySelectorAll('[data-animate]');
-    
     this.initObserver();
   }
 
@@ -149,7 +148,7 @@ class ScrollAnimations {
     elementsToAnimate.forEach(({ selector, animation }) => {
       document.querySelectorAll(selector).forEach((el, index) => {
         el.setAttribute('data-animate', animation);
-        // Stagger animations for elements of the same type
+        // Stagger animations for list-like items
         if(el.classList.contains('project-card') || el.classList.contains('timeline-item')) {
            el.style.animationDelay = `${index * 0.1}s`;
         }
@@ -182,7 +181,6 @@ class TypingAnimation {
     this.charIndex = 0;
     this.isDeleting = false;
     
-    // Add a span for the cursor
     this.cursor = document.createElement('span');
     this.cursor.className = 'typing-cursor';
     this.element.parentNode.insertBefore(this.cursor, this.element.nextSibling);
@@ -196,12 +194,11 @@ class TypingAnimation {
     
     if (this.isDeleting) {
       this.charIndex--;
-      displayText = currentText.substring(0, this.charIndex);
     } else {
       this.charIndex++;
-      displayText = currentText.substring(0, this.charIndex);
     }
     
+    displayText = currentText.substring(0, this.charIndex);
     this.element.textContent = displayText;
     
     let typeSpeed = this.isDeleting ? this.options.backSpeed : this.options.typeSpeed;
@@ -219,13 +216,14 @@ class TypingAnimation {
   }
 }
 
-// --- CONTACT FORM HANDLER ---
+// --- CONTACT FORM HANDLER (with Formspree Integration) ---
 class ContactFormHandler {
   constructor() {
     this.form = document.getElementById('contact-form');
     if (!this.form) return;
     
     this.submitBtn = this.form.querySelector('button[type="submit"]');
+    this.formspreeEndpoint = 'https://formspree.io/f/xgvzoydp'; // Your Formspree URL
     this.init();
   }
 
@@ -237,14 +235,12 @@ class ContactFormHandler {
       this.setLoadingState(true);
       
       try {
-        // Replace with your actual form submission logic (e.g., fetch to an API)
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        await this.submitForm();
         this.showMessage('Message sent successfully!', 'success');
         this.form.reset();
-        // Clear floating labels
         this.form.querySelectorAll('.form-group.focused').forEach(el => el.classList.remove('focused'));
-
       } catch (error) {
+        console.error('Form submission error:', error);
         this.showMessage('An error occurred. Please try again.', 'error');
       } finally {
         this.setLoadingState(false, submitBtnOriginalHTML);
@@ -252,6 +248,25 @@ class ContactFormHandler {
     });
     
     this.handleInputAnimation();
+  }
+
+  async submitForm() {
+    const formData = new FormData(this.form);
+    const object = Object.fromEntries(formData.entries());
+    
+    const response = await fetch(this.formspreeEndpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(object)
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
   }
 
   handleInputAnimation() {
@@ -276,13 +291,10 @@ class ContactFormHandler {
   }
 
   showMessage(message, type) {
-    // Remove any existing message
     this.form.querySelector('.form-message')?.remove();
-
     const messageEl = document.createElement('div');
     messageEl.className = `form-message ${type}`;
     messageEl.textContent = message;
-    
     this.form.appendChild(messageEl);
     
     setTimeout(() => {
@@ -297,6 +309,7 @@ class ParticleBackground {
   constructor(containerId) {
     this.container = document.getElementById(containerId);
     if (!this.container) return;
+    
     this.canvas = document.createElement('canvas');
     this.ctx = this.canvas.getContext('2d');
     this.particles = [];
@@ -382,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeToggler = document.getElementById('theme-toggle');
   if(themeToggler) {
       themeToggler.addEventListener('click', () => {
-          const currentTheme = document.documentElement.getAttribute('data-theme');
+          const currentTheme = document.documentElement.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
           const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
           document.documentElement.setAttribute('data-theme', newTheme);
           localStorage.setItem('theme', newTheme);
