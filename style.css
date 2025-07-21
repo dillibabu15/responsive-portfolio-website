@@ -588,14 +588,7 @@ section {
   margin-bottom: var(--space-3xl);
 }
 
-.timeline-item:nth-child(odd) .timeline-content {
-  padding-right: calc(50% + 30px);
-  text-align: right;
-}
 
-.timeline-item:nth-child(even) .timeline-content {
-  padding-left: calc(50% + 30px);
-}
 
 .timeline-dot {
   position: absolute;
