@@ -2,11 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>D Dilli Babu - Full Stack Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <meta name="theme-color" content="#6366f1" />
     <meta name="description" content="Full Stack Developer skilled in MERN stack, Python, and AI technologies" />
+    <meta name="keywords" content="Full Stack Developer, MERN Stack, Python, AI, Web Development, Portfolio" />
+    <meta name="author" content="D Dilli Babu" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
+    <title>D Dilli Babu - Full Stack Developer</title>
   </head>
   <body>
         <!-- Navigation -->
@@ -14,15 +18,16 @@
           <div class="nav-container">
             <div class="logo">D Dilli Babu</div>
             <ul class="nav-links" id="nav-links">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#experience">Experience</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#skills">Skills</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="#home" aria-label="Go to Home section">Home</a></li>
+              <li><a href="#about" aria-label="Go to About section">About</a></li>
+              <li><a href="#experience" aria-label="Go to Experience section">Experience</a></li>
+              <li><a href="#projects" aria-label="Go to Projects section">Projects</a></li>
+              <li><a href="#skills" aria-label="Go to Skills section">Skills</a></li>
+              <li><a href="#extracurricular" aria-label="Go to Extracurricular section">Activities</a></li>
+              <li><a href="#contact" aria-label="Go to Contact section">Contact</a></li>
             </ul>
-            <button class="mobile-menu" id="mobile-menu">
-              <i class="fas fa-bars"></i>
+            <button class="mobile-menu" id="mobile-menu" aria-label="Toggle mobile menu" aria-expanded="false">
+              <i class="fas fa-bars" aria-hidden="true"></i>
             </button>
           </div>
         </nav>
@@ -237,13 +242,14 @@
                   <div class="project-overlay">
                     <div class="project-links">
                       <a
-                        href="https://github.com/dillibabu15"
+                        href="https://github.com/dillibabu15/Movidex"
                         target="_blank"
                         class="project-link"
+                        title="View on GitHub"
                       >
                         <i class="fab fa-github"></i>
                       </a>
-                      <a href="#" class="project-link">
+                      <a href="#" class="project-link" title="Live Demo">
                         <i class="fas fa-external-link-alt"></i>
                       </a>
                     </div>
@@ -282,6 +288,21 @@
                   <div class="project-placeholder">
                     <i class="fas fa-chart-bar fa-3x"></i>
                     <p>Student Analysis</p>
+                  </div>
+                  <div class="project-overlay">
+                    <div class="project-links">
+                      <a
+                        href="https://github.com/dillibabu15/STUDENT-PERFORMANCE-ANALYSIS-.git"
+                        target="_blank"
+                        class="project-link"
+                        title="View on GitHub"
+                      >
+                        <i class="fab fa-github"></i>
+                      </a>
+                      <a href="#" class="project-link" title="Live Demo">
+                        <i class="fas fa-external-link-alt"></i>
+                      </a>
+                    </div>
                   </div>
                 </div>
                 <div class="project-content">
@@ -336,6 +357,21 @@
                     <i class="fas fa-car fa-3x"></i>
                     <p>Car Rental Management</p>
                   </div>
+                  <div class="project-overlay">
+                    <div class="project-links">
+                      <a
+                        href="https://github.com/dillibabu15/Car-Rentals-main.git"
+                        target="_blank"
+                        class="project-link"
+                        title="View on GitHub"
+                      >
+                        <i class="fab fa-github"></i>
+                      </a>
+                      <a href="#" class="project-link" title="Live Demo">
+                        <i class="fas fa-external-link-alt"></i>
+                      </a>
+                    </div>
+                  </div>
                 </div>
                 <div class="project-content">
                   <div class="project-header">
@@ -357,6 +393,21 @@
                   <div class="project-placeholder">
                     <i class="fas fa-terminal fa-3x"></i>
                     <p>PyTerminal</p>
+                  </div>
+                  <div class="project-overlay">
+                    <div class="project-links">
+                      <a
+                        href="https://github.com/dillibabu15/codemate-project.git"
+                        target="_blank"
+                        class="project-link"
+                        title="View on GitHub"
+                      >
+                        <i class="fab fa-github"></i>
+                      </a>
+                      <a href="#" class="project-link" title="Live Demo">
+                        <i class="fas fa-external-link-alt"></i>
+                      </a>
+                    </div>
                   </div>
                 </div>
                 <div class="project-content">
@@ -382,12 +433,15 @@
         <section id="skills" class="skills">
           <div class="container">
             <div class="section-header">
-              <h2 class="section-title">Technical Skills</h2>
+              <h2 class="section-title skills-title">Technical Skills</h2>
+              <div class="title-underline"></div>
               <p class="section-subtitle">Technologies I work with</p>
             </div>
             <div class="skills-content">
-              <div class="skill-category">
-                <h3>Languages</h3>
+              <div class="skill-category glass-card">
+                <div class="category-header">
+                  <h3>Languages</h3>
+                </div>
                 <div class="skill-items">
                   <div class="skill-item">
                     <i class="fab fa-python"></i>
@@ -411,8 +465,10 @@
                   </div>
                 </div>
               </div>
-              <div class="skill-category">
-                <h3>Web Development</h3>
+              <div class="skill-category glass-card">
+                <div class="category-header">
+                  <h3>Web Development</h3>
+                </div>
                 <div class="skill-items">
                   <div class="skill-item">
                     <i class="fab fa-react"></i>
@@ -428,11 +484,11 @@
                   </div>
                   <div class="skill-item">
                     <i class="fab fa-html5"></i>
-                    <span>HTML</span>
+                    <span>HTML5</span>
                   </div>
                   <div class="skill-item">
                     <i class="fab fa-css3-alt"></i>
-                    <span>CSS</span>
+                    <span>CSS3</span>
                   </div>
                   <div class="skill-item">
                     <i class="fas fa-wind"></i>
@@ -444,8 +500,10 @@
                   </div>
                 </div>
               </div>
-              <div class="skill-category">
-                <h3>Databases</h3>
+              <div class="skill-category glass-card">
+                <div class="category-header">
+                  <h3>Databases</h3>
+                </div>
                 <div class="skill-items">
                   <div class="skill-item">
                     <i class="fas fa-leaf"></i>
@@ -457,8 +515,10 @@
                   </div>
                 </div>
               </div>
-              <div class="skill-category">
-                <h3>Design & Tools</h3>
+              <div class="skill-category glass-card">
+                <div class="category-header">
+                  <h3>Design & Tools</h3>
+                </div>
                 <div class="skill-items">
                   <div class="skill-item">
                     <i class="fab fa-figma"></i>
