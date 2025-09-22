@@ -74,7 +74,6 @@ This website is optimized for GitHub Pages deployment. The image paths are confi
 ## 📧 Contact
 
 - **Email**: dillidefe@gmail.com
-- **Phone**: +91 6382133791
 - **LinkedIn**: [D Dilli Babu](https://www.linkedin.com/in/d-dilli-babu-894133265/)
 - **GitHub**: [dillibabu15](https://github.com/dillibabu15)
 
