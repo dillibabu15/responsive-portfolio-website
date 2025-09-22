@@ -54,7 +54,7 @@ class NavigationManager {
 
   handleNavbarBackground() {
     // Add a 'scrolled' class for styling via CSS, which is more flexible
-    if (window.scrollY > 20) {
+    if (window.scrollY > 50) {
       this.navbar.classList.add('scrolled');
     } else {
       this.navbar.classList.remove('scrolled');
@@ -389,6 +389,22 @@ document.addEventListener('DOMContentLoaded', () => {
       "Creative Problem Solver",
       "B.Tech CSE Student"
     ]);
+  }
+  
+  // Initialize scroll-to-top button
+  const scrollTopBtn = document.getElementById('scroll-top');
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', utils.throttle(() => {
+      if (window.scrollY > 500) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+    }, 100));
+    
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   }
   
   // Hook for a theme toggler button if you add one to your HTML
