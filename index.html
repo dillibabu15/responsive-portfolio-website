@@ -7,6 +7,9 @@
     <meta name="description" content="Full Stack Developer skilled in MERN stack, Python, and AI technologies" />
     <meta name="keywords" content="Full Stack Developer, MERN Stack, Python, AI, Web Development, Portfolio" />
     <meta name="author" content="D Dilli Babu" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
@@ -26,6 +29,9 @@
               <li><a href="#extracurricular" aria-label="Go to Extracurricular section">Activities</a></li>
               <li><a href="#contact" aria-label="Go to Contact section">Contact</a></li>
             </ul>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">
+              <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
             <button class="mobile-menu" id="mobile-menu" aria-label="Toggle mobile menu" aria-expanded="false">
               <i class="fas fa-bars" aria-hidden="true"></i>
             </button>
@@ -549,11 +555,38 @@
               <h2 class="section-title">Extracurricular Activities</h2>
               <p class="section-subtitle">Leadership and community involvement</p>
             </div>
-            <ul>
-              <li>Head of Content & Social Media (BOD), DNS Club – Managed content, digital presence, and event outreach.</li>
-              <li>Certificate of Appreciation, SRM IST – Managed logistics and live media for AICTE-ATAL FDP.</li>
-              <li>Community Connect Volunteer, Anandam NGO – Assisted elders, supported library/gardening tasks, and contributed to the medical ward.</li>
-            </ul>
+            <div class="extracurricular-grid">
+              <div class="extracurricular-card">
+                <div class="card-icon">
+                  <i class="fas fa-users-cog"></i>
+                </div>
+                <div class="card-body">
+                  <h3>Head of Content & Social Media</h3>
+                  <span class="card-org">DNS Club</span>
+                  <p>Managed content strategy, digital presence, brand identity, and outreach for club events and workshops.</p>
+                </div>
+              </div>
+              <div class="extracurricular-card">
+                <div class="card-icon">
+                  <i class="fas fa-award"></i>
+                </div>
+                <div class="card-body">
+                  <h3>Certificate of Appreciation</h3>
+                  <span class="card-org">SRM Institute of Science and Technology</span>
+                  <p>Recognized for managing logistics, live streaming, and media operations during the AICTE-ATAL Faculty Development Programme (FDP).</p>
+                </div>
+              </div>
+              <div class="extracurricular-card">
+                <div class="card-icon">
+                  <i class="fas fa-hands-helping"></i>
+                </div>
+                <div class="card-body">
+                  <h3>Community Connect Volunteer</h3>
+                  <span class="card-org">Anandam NGO</span>
+                  <p>Provided support and care for elders, managed library systems, assisted with gardening activities, and supported medical ward logistics.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 

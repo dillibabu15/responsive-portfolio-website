@@ -407,20 +407,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   
-  // Hook for a theme toggler button if you add one to your HTML
+  // Theme toggler button logic
   const themeToggler = document.getElementById('theme-toggle');
-  if(themeToggler) {
-      themeToggler.addEventListener('click', () => {
-          const currentTheme = document.documentElement.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-          document.documentElement.setAttribute('data-theme', newTheme);
-          localStorage.setItem('theme', newTheme);
-      });
+  if (themeToggler) {
+    const toggleIcon = themeToggler.querySelector('i');
 
-      // Apply saved theme on load
-      const savedTheme = localStorage.getItem('theme');
-      if(savedTheme) {
-          document.documentElement.setAttribute('data-theme', savedTheme);
+    const updateIcon = (theme) => {
+      if (toggleIcon) {
+        if (theme === 'dark') {
+          toggleIcon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+          toggleIcon.classList.replace('fa-sun', 'fa-moon');
+        }
       }
+    };
+
+    themeToggler.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 
+                           (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateIcon(newTheme);
+    });
+
+    // Apply saved theme or system preference on load
+    const savedTheme = localStorage.getItem('theme') || 
+                       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateIcon(savedTheme);
   }
 });
