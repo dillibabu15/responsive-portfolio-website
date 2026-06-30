@@ -68,6 +68,9 @@
   /* Layout */
   --container-max-width: 1200px;
   --navbar-height: 80px;
+  --bg-image: url('Images/bg_light.png');
+  --grid-pattern: linear-gradient(to right, rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+                  linear-gradient(to bottom, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
 }
 
 /* --- Dark Theme overrides --- */
@@ -96,6 +99,9 @@ html[data-theme="dark"] {
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+  --bg-image: url('Images/bg_dark.png');
+  --grid-pattern: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                  linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
 
 /* System Preference Dark Mode as Fallback */
@@ -119,6 +125,9 @@ html[data-theme="dark"] {
     --glass-bg: rgba(15, 23, 42, 0.75);
     --glass-border: rgba(51, 65, 85, 0.4);
     --card-hover-border: rgba(99, 102, 241, 0.35);
+    --bg-image: url('Images/bg_dark.png');
+    --grid-pattern: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   }
 }
 
@@ -140,9 +149,10 @@ body {
   line-height: 1.6;
   color: var(--text-primary);
   background-color: var(--bg-primary);
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.04) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(245, 158, 11, 0.02) 0px, transparent 50%);
+  background-image: var(--grid-pattern), var(--bg-image);
+  background-size: 50px 50px, cover;
+  background-position: center, center;
+  background-repeat: repeat, no-repeat;
   background-attachment: fixed;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -155,11 +165,80 @@ body {
   margin: 0 auto;
   padding: 0 var(--space-lg);
   width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 section {
   padding: var(--space-3xl) 0;
   position: relative;
+  overflow: hidden;
+}
+
+/* Ambient Backlights / Glow blobs */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  right: 15%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.05) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: 30%;
+  right: 10%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 75%);
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.projects::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.05) 0%, transparent 70%);
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.skills::before {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  right: 20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* Headers */
@@ -393,6 +472,10 @@ html[data-theme="dark"] .theme-toggle i {
   gap: var(--space-3xl);
   align-items: center;
   min-height: 70vh;
+}
+
+.hero-text {
+  padding-left: var(--space-2xl);
 }
 
 .hero-title {
@@ -789,6 +872,17 @@ html[data-theme="dark"] .theme-toggle i {
   position: relative;
   height: 220px;
   overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.05);
 }
 
 .project-placeholder {
@@ -1401,9 +1495,6 @@ html[data-theme="dark"] .theme-toggle i {
   border-color: var(--primary-color);
 }
 
-.resume-download {
-  margin-top: var(--space-lg);
-}
 
 .contact-form {
   background: var(--surface);
@@ -1648,6 +1739,10 @@ html[data-theme="dark"] .theme-toggle i {
     grid-template-columns: 1fr;
     text-align: center;
     gap: var(--space-2xl);
+  }
+
+  .hero-text {
+    padding-left: 0;
   }
 
   .hero-description {
