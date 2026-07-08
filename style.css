@@ -864,10 +864,6 @@ html[data-theme="dark"] .theme-toggle i {
   border-color: var(--card-hover-border);
 }
 
-.project-card.featured {
-  grid-column: span 2;
-}
-
 .project-image {
   position: relative;
   height: 220px;
@@ -1767,10 +1763,6 @@ html[data-theme="dark"] .theme-toggle i {
   .contact-content {
     grid-template-columns: 1fr;
     gap: var(--space-2xl);
-  }
-
-  .project-card.featured {
-    grid-column: span 1;
   }
 }
 
