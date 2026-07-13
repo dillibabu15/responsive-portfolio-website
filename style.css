@@ -352,7 +352,9 @@ p {
 
 #navbar.scrolled {
   box-shadow: var(--shadow-md);
-  background: var(--surface);
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .nav-container {
@@ -758,10 +760,12 @@ html[data-theme="dark"] .theme-toggle i {
 }
 
 .timeline-box {
-  background: var(--surface);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   padding: var(--space-xl);
   border-radius: var(--border-radius-lg);
-  border: 1px solid var(--border);
+  border: 1px solid var(--glass-border);
   box-shadow: var(--shadow);
   transition: all var(--transition);
   display: inline-block;
@@ -848,8 +852,10 @@ html[data-theme="dark"] .theme-toggle i {
 }
 
 .project-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
   border-radius: var(--border-radius-xl);
   overflow: hidden;
   box-shadow: var(--shadow-md);
@@ -1029,11 +1035,11 @@ html[data-theme="dark"] .theme-toggle i {
   flex-direction: column;
   height: 100%;
   padding: var(--space-2xl);
-  border: 1px solid var(--border);
+  border: 1px solid var(--glass-border);
   border-radius: var(--border-radius-lg);
   background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   transition: all var(--transition);
 }
 
@@ -1153,9 +1159,11 @@ html[data-theme="dark"] .theme-toggle i {
 
 .showcase-card {
   padding: var(--space-2xl);
-  border: 1px solid var(--border);
+  border: 1px solid var(--glass-border);
   border-radius: var(--border-radius-lg);
-  background: var(--surface);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   transition: all var(--transition);
 }
 
@@ -1265,8 +1273,10 @@ html[data-theme="dark"] .theme-toggle i {
 }
 
 .glass-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
   border-radius: var(--border-radius-xl);
   padding: var(--space-xl);
   box-shadow: var(--shadow-md);
@@ -1341,8 +1351,10 @@ html[data-theme="dark"] .theme-toggle i {
 }
 
 .extracurricular-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
   border-radius: var(--border-radius-xl);
   padding: var(--space-xl);
   box-shadow: var(--shadow-md);
@@ -1493,9 +1505,11 @@ html[data-theme="dark"] .theme-toggle i {
 
 
 .contact-form {
-  background: var(--surface);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   padding: var(--space-2xl);
-  border: 1px solid var(--border);
+  border: 1px solid var(--glass-border);
   border-radius: var(--border-radius-xl);
   box-shadow: var(--shadow-lg);
 }
